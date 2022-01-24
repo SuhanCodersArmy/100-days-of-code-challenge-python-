@@ -1,0 +1,8 @@
+# This is a split the bill calculator it will help you to split the blll among uour friends with tipppp!!!!!!
+Bill = float(input("Please enter the bill:\n₹"))
+Tip = float(input("Please enter the percent of tip you want to pay\n"))
+No_of_people = int(input("Please enter how many people are you:\n"))
+Total_Bill = (Bill+(Tip/100*Bill)) / No_of_people
+
+# Now it will calculate the money each person has to pay
+print(f"Each people has to pay ₹{round(Total_Bill,2)}")
