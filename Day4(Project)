@@ -1,0 +1,64 @@
+import random
+random_number = random.randint(0, 2)
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+#Write your code below this line 👇
+
+rock_paper_scissors = int(input("Please enter 0 for rock, 1 for paper, 2 for scissors\n"))
+if rock_paper_scissors == 0:
+    print(f"You opted for rock\n{rock}")
+    if random_number == 0:
+        print(f"{rock}\nThe computer opted for rock.\nGame tie!.")
+    elif random_number == 1:
+        print(f"{paper}\nThe computer opted for paper.\nYou lose!")
+    elif random_number == 2:
+        print(f"{scissors}\nThe computer opted for scissors.\nYou won!")
+    else:
+        print("Code is wrong")
+elif rock_paper_scissors == 1:
+    print(f"You opted for paper.\n{paper}")
+    if random_number == 0:
+        print(f"{rock}\nThe computer opted for rock.\nYou won!")
+    elif random_number == 1:
+        print(f"{paper}\nThe computer opted for paper.\nGame tie!")
+    elif random_number == 2:
+        print(f"{scissors}\nThe computer opted for scissors.\nYou lose!")
+    else:
+        print("Code is wrong")
+elif rock_paper_scissors == 2:
+    print(f"You opted for scissors.\n{scissors}")
+    if random_number == 0:
+        print(f"{rock}\nThe computer opted for rock.\nGame lost!")
+    elif random_number == 1:
+        print(f"{paper}\nThe computer opted for paper.\nYou won!")
+    elif random_number == 2:
+        print(f"{scissors}\nThe computer opted for scissors.\n Game tie!")
+    else:
+         print("Code is wrong")
+else:
+    print("Please enter 0 for rock, 1 for paper, 2 for scissors")
