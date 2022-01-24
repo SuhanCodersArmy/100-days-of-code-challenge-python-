@@ -1,0 +1,5 @@
+# I am creating a band name genarator this would help you to create your band name 
+print("Are you stuck in creating a cool name?\nDon't worry my project will help you to create a cool name for your band")
+City_Name=input("Please enter in which city you grew up?\n")
+Name_pet=input("Please enter the name of your pet\n")
+print("The perfect name for your band is ",City_Name+ Name_pet)
