@@ -1,0 +1,96 @@
+from day10(art) import logo, Bye
+import os
+import math
+import numpy
+
+def operation():
+    num1 = float(input("Enter 1st number: "))
+
+    def add(num1, num2):
+        result = num1 + num2
+        return result
+
+    def subtract(num1, num2):
+        result = num1 - num2
+        return result
+
+    def multiply(num1, num2):
+        result = num1 * num2
+        return result
+
+    def divide(num1, num2):
+        result = num1 / num2
+        return result
+    
+    def sqroot(num1):
+        result = math.sqrt(num1)
+        return result
+    def cbroot(num1):
+        result = numpy.cbrt(num1)
+        return result
+    def exponent(num1, num2):
+        result = num1 ** num2
+        return result
+
+    operations = {
+        "+" : add,
+        "-": subtract,
+        "*": multiply,
+        "/" : divide,
+        "sqrt": sqroot,
+        "cbrt": cbroot,
+        "**" : exponent,}
+
+    for i in operations:
+        print(i)
+
+    select_operation = input("Enter 1 operator mention above\n")
+
+    if select_operation == "cbrt": 
+        print(cbroot(num1))
+
+    elif select_operation == "sqrt": 
+        print({sqroot(num1)})
+
+    else:
+        num2 = float(input("Enter 2st number: "))
+
+        if select_operation == "+":
+            print(add(num1, num2))
+
+        elif select_operation == "-":
+            print(subtract(num1, num2))
+
+        elif select_operation == "*":
+            print(multiply(num1, num2))
+
+        elif select_operation == "/":
+            print(divide(num1, num2))  
+        
+        elif select_operation == "**": 
+            print(exponent(num1))
+        
+        else:
+            print("You made a Typo!!!")
+
+os.system("cls")
+print(f"""{logo}
+Welcome to my calculator
+""")
+
+while True:
+    operation()
+    run_again = input("Do you want to run it again\nType (yes/no)\n").lower()
+
+    if run_again == "yes":
+        os.system("cls")
+        continue
+
+    elif run_again == "no":
+        print("Thank you for using my calculator")
+        print(Bye)
+        break
+
+    else:
+        print("You made a typo!!")
+        break
