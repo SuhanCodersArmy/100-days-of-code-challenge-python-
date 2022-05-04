@@ -1,0 +1,56 @@
+from day10(art) import art1, art2, art3
+from random import randint
+import os
+
+def clear():
+    os.system("cls")
+
+clear()
+print(art1)
+comp_num = randint(0, 100)
+ask_level = input("Choose the level.\nType (easy/hard): ").lower()
+print(comp_num)
+if ask_level == "easy":
+    attempts = 0
+    while True:
+        players_num = int(input("Guess a number: "))
+        if players_num == comp_num:
+            print(f"You guesed it right\n{art2}")
+            break
+        
+        elif players_num != comp_num:
+            attempts += 1
+
+            if comp_num < players_num:
+                print("The number is higher.\nGuess a lower number: ")
+            
+            elif comp_num > players_num:
+                print("The number is lesser.\nGuess a Higher number: ")
+
+            print(f"Total attempts left {10 - attempts}")
+
+        elif attempts == 10:
+            print(f"Your attempts are finished, the number is {comp_num}\n{art3}")
+            break
+
+elif ask_level == "hard":
+    attempts = 0
+    while True:
+        players_num = int(input("Guess a number: "))
+        if players_num == comp_num:
+            print(f"You guesed it right\n{art2}")
+            break
+        
+        elif players_num != comp_num:
+            attempts += 1
+
+            if comp_num < players_num:
+                print("The number is higher.\nGuess a lower number: ")
+            
+            elif comp_num > players_num:
+                print("The number is lesser.\nGuess a Higher number: ")
+            print(f"Total attempts left {5 - attempts}")    
+
+        elif attempts == 5:
+            print(f"Your attempts are finished, the number is {comp_num}\n{art3}")
+            break
