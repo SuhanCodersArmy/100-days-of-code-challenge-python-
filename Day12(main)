@@ -5,14 +5,16 @@ import os
 def clear():
     os.system("cls")
 
+def clear():
+    os.system("cls")
+
 clear()
 print(art1)
-comp_num = randint(0, 100)
-ask_level = input("Choose the level.\nType (easy/hard): ").lower()
-print(comp_num)
+ask_level = input("Choose the level.\nEasy level has number between 0-100 and 10 attempts and Hard level has numbers 0-1000 and 7 attempts\nType (easy/hard): ").lower()
 if ask_level == "easy":
     attempts = 0
     while True:
+        comp_num = randint(0, 100)
         players_num = int(input("Guess a number: "))
         if players_num == comp_num:
             print(f"You guesed it right\n{art2}")
@@ -34,6 +36,7 @@ if ask_level == "easy":
             break
 
 elif ask_level == "hard":
+    comp_num = randint(0, 1000)
     attempts = 0
     while True:
         players_num = int(input("Guess a number: "))
@@ -51,6 +54,6 @@ elif ask_level == "hard":
                 print("The number is lesser.\nGuess a Higher number: ")
             print(f"Total attempts left {5 - attempts}")    
 
-        elif attempts == 5:
+        elif attempts == 7:
             print(f"Your attempts are finished, the number is {comp_num}\n{art3}")
             break
