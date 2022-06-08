@@ -1,0 +1,64 @@
+from Day14(art) import logo, vs, game_over
+from Day14(data) import data
+from random import randint
+from os import system
+
+def clear():
+    """This function clears the terminal"""
+    system("cls")
+
+def main():
+    """This function generate the data"""
+    choice = randint(0, len(data) - 1)
+    global data_main
+    data_main = data[choice]
+    points = data_main["follower_count"]
+    return "Name:", data_main["name"],", Description: ", data_main["description"], points
+    
+
+play = True
+
+player_b = main()
+player_a = main()
+
+
+def compare():
+    """This function will compare between both of them and if the guess is correct it will return right else wrong and if it returns right the if/else statment in the while where marked 1 will add 1 to the score"""
+    guess_player = input("Enter which  is greater A or B: ").lower()
+
+    # i am writing the index as 4 because in the main function 4 has the follower count 
+    if player_a[4] > player_b[4] and guess_player == "a":
+        return "right"
+
+    elif player_b[4] > player_a[4] and guess_player == "b":
+        return "right"
+        
+    else:
+        return "wrong"
+
+def check_not_same():
+    if player_a[0] == player_b[0]:
+        player_a = main()
+        player_b = main()
+
+score = 0
+clear()
+
+while play == True:
+    print(f"{logo}\n")
+    print(player_a)
+    print(vs)
+    print(player_b)
+
+    if compare() == "right":
+        score += 1
+
+    else:
+        print(f"you guessed it wrong, your score is {score}")
+        print(game_over)
+        play = False
+
+    player_b = main()
+    player_a = main()
+    clear()
+    print(f"You guessed it right your score is {score}")
