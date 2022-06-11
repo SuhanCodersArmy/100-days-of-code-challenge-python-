@@ -1,0 +1,108 @@
+#Coffee Machine Program
+from os import system as sys
+
+program_run = 0
+operation = True
+# The menu of the coffee machine 
+menu = {
+    "expresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+# The resouce available in the coffee machine 
+resources = {
+    "water": 1000,
+    "milk": 1000,
+    "coffee": 1000,
+}
+
+def clear():
+    """This function will clear terminal"""
+    sys("cls")
+
+clear()
+
+
+while operation == True:
+    coffee = input("Which coffee do you want to drink expresso cost is $1.5/latte cost is $2.5/cappuccino cost is $3.0: ")
+
+    def money_operate(x):
+        penny_collect = int(input("Enter penny: "))
+        nickel_collect = int(input("Enter nickel: "))
+        dimes_collect = int(input("Enter dimes: "))
+        quarter_collect = int(input("Enter quarter: "))
+        global money
+        money = (penny_collect * 0.01) + (nickel_collect * 0.05) + (dimes_collect * 0.1) + (quarter_collect * 0.25)
+        if money > x:
+            money_left = money - x
+            print(f"Here is your extra money {money_left}")
+            money -= money_left
+        return money        
+
+    if coffee == "expresso":
+            # if the customer oreder expreso 
+            if money_operate(1.5) >= 1.5:
+                print("Your coffee is ready ☕☕")
+                resources_left = {
+                    "water": resources["water"] - 50,
+                    "coffee": resources["coffee"] - 18,}
+
+                
+            else:
+                money_left = 1.5 - money
+                print(f"You have enter {money_left} less")
+    
+    elif coffee == "latte":
+        # if the customer orders latte 
+        if money_operate(2.5) >= 2.5:
+            print("Your coffee is ready ☕☕")
+            resources_left = {
+                "water": resources["water"] - 200,
+                "coffee": resources["coffee"] - 24,
+                "milk": resources["milk"] - 150,}
+
+            
+        else:
+            money_left = 2.5 - money
+            print(f"You have enter {money_left} less")
+
+    elif coffee == "cappuccino":
+        # if the customer orders cappuccino
+        if money_operate(3) >= 3:
+            print("Your coffee is ready ☕☕")
+            resources_left = {
+                    "water": resources["water"] - 250,
+                    "coffee": resources["coffee"] - 24,
+                    "milk": resources["milk"] - 100,}
+
+        else:
+            money_left = 3 - money
+            print(f"You have enter {money_left} less")
+
+    else:
+        if coffee == "off":
+            operation = False
+        
+        elif coffee == "report":
+            print(f"Resources left {resources_left}\nMoney collected ${money}")
