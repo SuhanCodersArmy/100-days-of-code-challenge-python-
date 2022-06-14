@@ -1,0 +1,25 @@
+from day16(menu) import Menu
+from day16(coffee_maker) import CoffeeMaker
+from day16(money_machine) import MoneyMachine
+
+operation = True
+
+menu = Menu()
+maker = CoffeeMaker()
+money = MoneyMachine()
+coffee = menu.get_items()
+
+while operation:
+    query = input(f"Here are the options {coffee}")
+
+    if query == "report":
+        maker.report()
+        money.report()
+    
+    elif query == "off":
+        operation = False
+
+    else:
+        order = menu.find_drink(query)
+        if maker.is_resource_sufficient(order) and money.make_payment(order.cost):
+            maker.make_coffee(order)
